@@ -1,0 +1,49 @@
+apt-get install python3
+#before run needs to remove sudo in the below script.
+./ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+
+#comment the first return 1 in these below file
+
+vi /usr/local/amba-cv-tools-2.1.9-20200428.ubuntu-18.04/env/cv22.env
+
+# source it
+
+source /usr/local/amba-cv-tools-2.1.9-20200428.ubuntu-18.04/env/cv22.env
+
+ docker cp start.sh 0309ea9a3ec9:/
+ docker cp dra_img/ 0309ea9a3ec9:/
+ docker cp r1202_16.onnx 0309ea9a3ec9:/
+
+apt-get install python3-pip
+
+
+pip3 install scikit-image==0.17.2 && pip3 install numpy==1.18.5
+
+
+sed -e s/sudo//g -i ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+
+
+Indian Maldives
+
+
+/usr/local
+sed -i '4s/^/#return 1\n/' /usr/local/amba-cv-tools-2.1.9-20200428.ubuntu-18.04/env/cv22.env
+
+
+export MYTEST=/usr/local
+sed -i '6s/^/ANSWER=y\n/' ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+sed -i '7s/^/TOOLCHAIN=$MYTEST\n/' ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+sed -i '8s/^/CAFFE_ANS=y\n/' ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+sed -i '9s/^/TF_ANS=y\n/' ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+sed -i '10s/^/ONNX_ANS=y\n/' ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+ANSWER=y
+TOOLCHAIN=/usr/local
+CAFFE_ANS=y
+TF_ANS=y
+ONNX_ANS=y
+sed '49s/.*/#read TOOLCHAIN/' /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04 >> /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04-updated
+mv /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04-updated /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+sed '50s/.*/case $TOOLCHAIN in/' /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04 >> /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04-updated
+
+mv /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04-updated /Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/ubuntuToolChain-2.1.9-20200428.ubuntu-18.04
+/Ambarella_Toolchain_CNNGen_2.1.9_20200428/Ubuntu-18.04/wheel/
